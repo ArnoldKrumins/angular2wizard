@@ -9,10 +9,13 @@ import {ContentTwoComponent} from './components/contenttwo.component'
     selector: 'my-app',
     template: `
     <tabs>
-      <tab tabTitle="'Tab 1'" tabButton="Next">
+      <tab tabTitle="Select Publishers" tabButton="Next">
         <content-one></content-one>
       </tab>
-      <tab tabTitle="Tab 2"  tabButton="Previous" >
+      <tab tabTitle="Select Domains"  tabButton="Next" >
+         <content-two></content-two>
+       </tab>
+       <tab tabTitle="Confirm and Save"  tabButton="Previous" >
          <content-two></content-two>
        </tab>
     </tabs>

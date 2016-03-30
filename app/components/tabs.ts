@@ -13,7 +13,6 @@ import { Tab } from './tab';
       </li>
     </ul>
     <ng-content></ng-content>
-
   `
 })
 export class Tabs implements AfterContentInit {
