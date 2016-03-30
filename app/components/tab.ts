@@ -13,10 +13,13 @@ import { Component, Input } from 'angular2/core';
     template: `
     <div [hidden]="!active" class="pane">
       <ng-content></ng-content>
+      <button class="btn btn-success">{{ next }}</button>
     </div>
+
   `
 })
 export class Tab {
+    @Input('tabButton') next: string;
     @Input('tabTitle') title: string;
     @Input() active = false;
 }
