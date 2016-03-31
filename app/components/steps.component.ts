@@ -2,40 +2,40 @@
  * Created by arnoldkrumins on 30/03/2016.
  */
 import { Component, ContentChildren, QueryList, AfterContentInit } from 'angular2/core';
-import { Tab } from './tab';
+import { Step } from './step.component';
 
 @Component({
-    selector: 'tabs',
+    selector: 'steps',
     template:`
     <ul class="nav nav-tabs">
-      <li *ngFor="#tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-        <a href="#">{{tab.title}}</a>
+      <li *ngFor="#step of steps" (click)="selectStep(step)" [class.active]="step.active">
+        <a href="#">{{ step.title }}</a>
       </li>
     </ul>
     <ng-content></ng-content>
   `
 })
-export class Tabs implements AfterContentInit {
+export class Steps implements AfterContentInit {
 
-    @ContentChildren(Tab) tabs: QueryList<Tab>;
+    @ContentChildren(Step) steps: QueryList<Step>;
 
     // contentChildren are set
     ngAfterContentInit() {
         // get all active tabs
-        let activeTabs = this.tabs.filter((tab)=>tab.active);
+        let activeTabs = this.steps.filter((tab)=>tab.active);
 
         // if there is no active tab set, activate the first
         if(activeTabs.length === 0) {
-            this.selectTab(this.tabs.first);
+            this.selectStep(this.steps.first);
         }
     }
 
-    selectTab(tab: Tab){
+    selectStep(step: Step){
         // deactivate all tabs
-        this.tabs.toArray().forEach(tab => tab.active = false);
+        this.steps.toArray().forEach(step => step.active = false);
 
         // activate the tab the user has clicked on.
-        tab.active = true;
+        step.active = true;
     }
 
 }
