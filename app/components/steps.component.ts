@@ -6,11 +6,11 @@ import { Step } from './step.component';
 
 @Component({
     selector: 'steps',
-    template:`{{ buttonPressed }}
+    template:`
     <ol class="list-unstyled list-inline wizardsteps">
-      <li class="text-center wizardsteps-step" *ngFor="#step of steps" (click)="selectStep(step)" [class.current]="step.active" [class.disabled]="!step.active">
+      <li class="text-center wizardsteps-step" *ngFor="#step of steps" (click)="selectStep(step)" [class.current]="step.active" [class.disabled]="step.disabled">
         <span class="fa-stack fa-lg">
-            <i class="fa fa-stack-2x fa-circle-thin">{{ step.count }}</i>
+            <i class="fa fa-stack-2x fa-circle-thin">{{ step.stepNumber }}</i>
             <div class="wizardsteps-step-text">{{ step.title }}</div>
         </span>
       </li>
@@ -20,9 +20,21 @@ import { Step } from './step.component';
 })
 export class Steps implements AfterContentInit {
 
-    @Input() buttonPressed:string;
-
     @ContentChildren(Step) steps: QueryList<Step>;
+
+    @Input() set buttonEvent(buttonEvent:string){
+
+        if(buttonEvent === undefined) return;
+
+        let index = buttonEvent.split(':')[1];
+
+        this.steps.toArray().forEach(step => step.active = false);
+        let step = this.steps.toArray()[index];
+        step.active = true;
+        step.disabled= false;
+
+    }
+
 
     // contentChildren are set
     ngAfterContentInit() {
@@ -41,6 +53,9 @@ export class Steps implements AfterContentInit {
 
         // activate the tab the user has clicked on.
         step.active = true;
+        step.disabled = false;
     }
+
+
 
 }

@@ -9,14 +9,14 @@ import {ContentTwoComponent} from './components/contenttwo.component'
     selector: 'my-app',
     template: `
     <div style="margin:20px;">
-    <steps [buttonPressed]="buttonValue" >
-      <step title="Select Publishers" rightButtonText="Domains" count="1" (onButtonClick)="check($event)">
+    <steps [buttonEvent]="buttonValue" >
+      <step title="Select Publishers" rightButtonText="Domains" stepNumber="1" (onButtonClick)="check($event)">
         <content-one></content-one>
       </step>
-      <step title="Select Domains" leftButtonText="Publishers"  rightButtonText="Save & Confitm"  count="2" (onButtonClick)="check($event)">
+      <step title="Select Domains" leftButtonText="Publishers"  rightButtonText="Save & Confitm"  stepNumber="2" (onButtonClick)="check($event)">
          <content-two></content-two>
        </step>
-       <step title="Confirm and Save" leftButtonText="Domains"  rightButtonText="Save" count="3" (onButtonClick)="check($event)">
+       <step title="Confirm and Save" leftButtonText="Domains"  rightButtonText="Save" stepNumber="3" (onButtonClick)="check($event)">
          <content-two></content-two>
        </step>
      </steps>

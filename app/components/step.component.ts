@@ -10,8 +10,8 @@ import { Component, Input,Output,AfterContentInit,EventEmitter } from 'angular2/
     <div [hidden]="!active" class="pane">
       <ng-content></ng-content>
       <ul>
-         <li><div [hidden]="showLeftButton"><button (click)="onButtonClick.emit('left')" class="btn btn-default">{{ leftButtonText }}</button></div></li>
-         <li><div [hidden]="showRightButton"><button (click)="onButtonClick.emit('right')" class="btn btn-default">{{ rightButtonText }}</button></div></li>
+         <li><div [hidden]="showLeftButton"><button (click)="onButtonClick.emit(leftButtonText.concat(':',stepNumber))" class="btn btn-default">{{ leftButtonText }}</button></div></li>
+         <li><div [hidden]="showRightButton"><button (click)="onButtonClick.emit(rightButtonText.concat(':',stepNumber))" class="btn btn-default">{{ rightButtonText }}</button></div></li>
       </ul>
      </div>
   `
@@ -21,10 +21,12 @@ export class Step implements AfterContentInit {
     @Output() onButtonClick: EventEmitter<any> = new EventEmitter();
 
     @Input() title: string;
-    @Input() count: number;
+    @Input() stepNumber: number;
+
     @Input() leftButtonText: string;
     @Input() rightButtonText: string;
     @Input() active = false;
+    @Input() disabled = true;
 
     private showLeftButton = false;
     private showRightButton = false;
