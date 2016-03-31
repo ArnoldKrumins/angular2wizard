@@ -37,10 +37,19 @@
 
 .wizardsteps-step .fa-stack {
   margin-top: 12px;
+  width:100%;
 }
 
+.step-number{
+  position: absolute;
+  top: 5px;
+  left: 46%;
+  font-size: 24px;
+}
+
+
 .wizardsteps-step-text {
-  margin-top: 5px;
+  margin-top: 30px;
   font-size: 12px!important;
 }
 

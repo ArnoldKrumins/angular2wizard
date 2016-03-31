@@ -10,7 +10,7 @@ import { Step } from './step.component';
     <ol class="list-unstyled list-inline wizardsteps">
       <li class="text-center wizardsteps-step" *ngFor="#step of steps" (click)="selectStep(step)" [class.current]="step.active" [class.disabled]="step.disabled">
         <span class="fa-stack fa-lg">
-            <i class="fa fa-stack-2x fa-circle-thin">{{ step.stepNumber }}</i>
+            <i class="fa fa-stack-2x fa-circle-thin"><span class="step-number">{{ step.stepNumber }}</span></i>
             <div class="wizardsteps-step-text">{{ step.title }}</div>
         </span>
       </li>
