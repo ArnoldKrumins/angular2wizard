@@ -1,7 +1,7 @@
 /**
  * Created by arnoldkrumins on 30/03/2016.
  */
-import { Component, Input,AfterContentInit } from 'angular2/core';
+import { Component, Input,Output,AfterContentInit,EventEmitter } from 'angular2/core';
 
 @Component({
     selector: 'step',
@@ -10,13 +10,15 @@ import { Component, Input,AfterContentInit } from 'angular2/core';
     <div [hidden]="!active" class="pane">
       <ng-content></ng-content>
       <ul>
-         <li><div [hidden]="showLeftButton"><button class="btn btn-default">{{ leftButtonText }}</button></div></li>
-         <li><div [hidden]="showRightButton"><button class="btn btn-default">{{ rightButtonText }}</button></div></li>
+         <li><div [hidden]="showLeftButton"><button (click)="onButtonClick.emit('left')" class="btn btn-default">{{ leftButtonText }}</button></div></li>
+         <li><div [hidden]="showRightButton"><button (click)="onButtonClick.emit('right')" class="btn btn-default">{{ rightButtonText }}</button></div></li>
       </ul>
      </div>
   `
 })
 export class Step implements AfterContentInit {
+
+    @Output() onButtonClick: EventEmitter<any> = new EventEmitter();
 
     @Input() title: string;
     @Input() count: number;
@@ -28,16 +30,10 @@ export class Step implements AfterContentInit {
     private showRightButton = false;
 
 
-
     ngAfterContentInit(){
         this.showLeftButton =  this.leftButtonText === undefined ? true : false;
         this.showRightButton =  this.rightButtonText === undefined ? true : false;
     }
 
-
-    constructor(){
-
-    }
-
-
+    constructor(){}
 }

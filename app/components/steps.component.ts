@@ -1,12 +1,12 @@
 /**
  * Created by arnoldkrumins on 30/03/2016.
  */
-import { Component, ContentChildren, QueryList, AfterContentInit } from 'angular2/core';
+import { Component,Input, ContentChildren, QueryList, AfterContentInit } from 'angular2/core';
 import { Step } from './step.component';
 
 @Component({
     selector: 'steps',
-    template:`
+    template:`{{ buttonPressed }}
     <ol class="list-unstyled list-inline wizardsteps">
       <li class="text-center wizardsteps-step" *ngFor="#step of steps" (click)="selectStep(step)" [class.current]="step.active" [class.disabled]="!step.active">
         <span class="fa-stack fa-lg">
@@ -19,6 +19,8 @@ import { Step } from './step.component';
   `
 })
 export class Steps implements AfterContentInit {
+
+    @Input() buttonPressed:string;
 
     @ContentChildren(Step) steps: QueryList<Step>;
 
