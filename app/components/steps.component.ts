@@ -7,11 +7,14 @@ import { Step } from './step.component';
 @Component({
     selector: 'steps',
     template:`
-    <ul class="nav nav-tabs">
-      <li *ngFor="#step of steps" (click)="selectStep(step)" [class.active]="step.active">
-        <a href="#">{{ step.title }}</a>
+    <ol class="list-unstyled list-inline wizardsteps">
+      <li class="text-center wizardsteps-step" *ngFor="#step of steps" (click)="selectStep(step)" [class.current]="step.active" [class.disabled]="!step.active">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-stack-2x fa-circle-thin">{{ step.count }}</i>
+            <div class="wizardsteps-step-text">{{ step.title }}</div>
+        </span>
       </li>
-    </ul>
+    </ol>
     <ng-content></ng-content>
   `
 })

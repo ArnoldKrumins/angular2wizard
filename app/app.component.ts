@@ -8,27 +8,25 @@ import {ContentTwoComponent} from './components/contenttwo.component'
 @Component({
     selector: 'my-app',
     template: `
+    <div style="margin:20px;">
     <steps>
-      <step stepTitle="Select Publishers">
+      <step title="Select Publishers" rightButtonText="Domains" count="1">
         <content-one></content-one>
-         <button class="btn btn-success">NEXT</button>
       </step>
-      <step stepTitle="Select Domains">
+      <step title="Select Domains" leftButtonText="Publishers"  rightButtonText="Save & Confitm"  count="2">
          <content-two></content-two>
-          <button class="btn btn-success">NEXT...</button>
        </step>
-       <step stepTitle="Confirm and Save">
+       <step title="Confirm and Save" leftButtonText="Domains"  rightButtonText="Save" count="3">
          <content-two></content-two>
-          <button class="btn btn-success">PREVIOUS</button>
-         
        </step>
-    </steps>
+     </steps>
+    </div>
   `,
     directives: [Steps, Step,ContentOneComponent,ContentTwoComponent]
 })
 export class App {
     constructor() {
-        
+
     }
 }
 
