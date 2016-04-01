@@ -73,3 +73,33 @@
 .button-footer button{
   margin:8px 0;
 }
+
+.drop-zone{
+  border: dashed #A9C9DA 3px;
+  background-color: #EAE8E8;
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  vertical-align: middle;
+  color: #749FB5;
+  padding: 10px;
+}
+
+.drop-zone i{
+  font-size: 50px;
+  opacity: 0.5;
+}
+
+.domains li{
+  display: inline-flex;
+}
+
+.domains li{
+  margin: 5px 10px;
+}
+.domains ul > li > div{
+  border: solid gray 1px;
+  padding: 20px;
+  width:200px;
+  text-align: center;
+}
