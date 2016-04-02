@@ -6,7 +6,7 @@ import {Component} from 'angular2/core';
 import {Steps} from './steps.component';
 import {Step} from './step.component';
 import {AddDomainComponent} from './add-domain.component'
-
+import {SaveDomainsComponent} from './blockeddomains-save.compoent';
 
 const enum StepContent {
     Publishers = 0,
@@ -16,7 +16,7 @@ const enum StepContent {
 
 @Component({
     selector: 'blocked-domains',
-    directives: [Steps, Step, AddDomainComponent],
+    directives: [Steps, Step, AddDomainComponent,SaveDomainsComponent],
     template: `
    
     <div style="margin:20px;">
@@ -31,7 +31,9 @@ const enum StepContent {
             </step>
 
             <step title="Select Domains"  stepNumber="2" >
+
                 <add-domain (onDomainsAvailable)="getDomains($event)"></add-domain>
+
                 <div class="button-footer">
                   <button class="btn btn-info pull-left" (click)="setContent(0)">Publishers</button>
                   <button class="btn btn-info pull-right" [disabled]="enableButton()" (click)="setContent(2)">Save & Confirm</button>
@@ -39,8 +41,10 @@ const enum StepContent {
             </step>
 
             <step title="Confirm and Save" stepNumber="3">
-                <h4>Save & Confirm Component here...</h4>
-                <div class="button-footer">    
+
+               <save-domains [domainsToBlock]="domains"></save-domains>
+
+                <div class="button-footer">
                     <button class="btn btn-info pull-left" (click)="setContent(1)">Back to Domains</button>  
                     <button class="btn btn-success pull-right">Save</button>  
                 </div>
