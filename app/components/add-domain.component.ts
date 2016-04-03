@@ -32,18 +32,31 @@ export class AddDomainComponent {
 
     @Output() onDomainsAvailable: EventEmitter<any> = new EventEmitter();
 
-    private domains = [];
+    private domains:Array<string> = [];
+
+    constructor(){
+        this.domains = new Array<string>();
+    }
+
+    private emitEvent(){
+        this.onDomainsAvailable.emit(this.domains);
+    }
 
     getDomains(data):void{
-        this.domains = data;
-        this.onDomainsAvailable.emit(this.domains);
+
+        _.forEach(data, d => {
+            if(!_.some(this.domains,domain => domain === d) || undefined){
+            this.domains.push(d)
+            }
+        });
+        this.emitEvent();
     }
 
     addDomain(newdomain):void{
 
         if(_.some(this.domains,domain => domain === newdomain)) return;
         this.domains.push(newdomain);
-
+        this.emitEvent();
     }
 }
 
