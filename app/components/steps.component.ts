@@ -3,9 +3,12 @@
  */
 import { Component,Input, ContentChildren, QueryList, AfterContentInit } from 'angular2/core';
 import { Step } from './step.component';
+import {SpinnerComponent} from '../directives/spinner.directive';
+
 
 @Component({
     selector: 'steps',
+    directives:[SpinnerComponent],
     template:`
     <ol class="list-unstyled list-inline wizardsteps">
       <li class="text-center wizardsteps-step" *ngFor="#step of steps"  [class.current]="step.active" [class.disabled]="step.disabled">
@@ -16,6 +19,8 @@ import { Step } from './step.component';
       </li>
     </ol>
     <ng-content></ng-content>
+    <my-spinner [isRunning]="busy"></my-spinner>
+
   `
 })
 export class Steps implements AfterContentInit {
@@ -33,6 +38,7 @@ export class Steps implements AfterContentInit {
 
     }
 
+    private busy:boolean = true;
     
     ngAfterContentInit() {
         // get all active tabs
