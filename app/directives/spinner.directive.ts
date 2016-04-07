@@ -1,20 +1,20 @@
 import {Component, Input} from 'angular2/core';
 
 @Component({
-    selector: 'my-spinner',
+    selector: 'spinner',
     template: `<div [class.hidden]="!show" class="spinner">
                   <div class="bounce1"></div>
                   <div class="bounce2"></div>
                   <div class="bounce3"></div>
-            </div>`,
+               </div>`,
     styles:[`
         .spinner {
-      margin: 100px auto 0;
-      width: 70px;
-      text-align: center;
-    }
+            margin: 100px auto 0;
+            width: 70px;
+            text-align: center;
+            }
 
-    .spinner > div {
+            .spinner > div {
               width: 18px;
               height: 18px;
               background-color: #0079C2;
@@ -55,8 +55,6 @@ import {Component, Input} from 'angular2/core';
 export class SpinnerComponent {
 
     private show: boolean = false;
-
-
 
     @Input()
     public set isRunning(value: boolean) {

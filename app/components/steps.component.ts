@@ -19,7 +19,7 @@ import {SpinnerComponent} from '../directives/spinner.directive';
       </li>
     </ol>
     <ng-content></ng-content>
-    <my-spinner [isRunning]="busy"></my-spinner>
+    <spinner [isRunning]="busy"></spinner>
 
   `
 })
